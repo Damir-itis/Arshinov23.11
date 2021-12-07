@@ -2,15 +2,27 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
     <changeSet id="1" author="Damir">
-        <createTable tableName="USER">
-            <column name = "id" type = "bigint" autoIncrement="true">
-                <constraints nullable="false" primaryKey="true"/>
+        <createTable tableName="USERS">
+            <column name = "USERNAME" type="varchar(50)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>   
+            <column name = "PASSWORD" type="varchar(100)">
+                <constraints nullable="false"/>
             </column>
-            <column name = "FIRST_NAME" type="varchar(64)">
+            <column name = "ENABLED" type="smallint" defaultValue="1">
+                <constraints nullable="false"/>
             </column>
-            <column name = "LAST_NAME" type="varchar(64)">
-                <constraints nullable="true"/>
+
+        </createTable>
+
+        <createTable tableName="AUTHORITIES">
+            <column name = "USERNAME" type="varchar(50)">
+                <constraints foreignKeyName="FK_USERNAME" references="USERS(USERNAME)" primaryKey="true" nullable="false"/>
+            </column>
+            <column name = "AUTHORITY" type="varchar(50)">
+                <constraints nullable="false"/>
             </column>
         </createTable>
+
     </changeSet>
 </databaseChangeLog>

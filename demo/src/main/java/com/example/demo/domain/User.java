@@ -5,13 +5,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
-public class User {
+@Entity // для всех сущностей пишем эту аннотацию
+public class User {  // в домейне мы пишем сущности, классы, которые отобразятся базой данных в таблицу
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id// В каждой сущности пишем id, который говорит, что этот объект уникальный
+    @GeneratedValue(strategy = GenerationType.AUTO) // пишем каким образом будем обновлять id, то есть каждый раз +1
     private Long id;
-    private String firstName;
+
+    private String firstName; // Поля - это наши колонки в таблице
     private String lastName;
 
     //private int age;

@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService { // В сервисах реализуется бизнес логика
 
 
     private UserRepository userRepository;
 
-    @Autowired
+    @Autowired //Внедряет зависимости (Создает бин и кладет его туда)
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
